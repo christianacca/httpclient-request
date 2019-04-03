@@ -1,0 +1,13 @@
+version: '3.5'
+
+services: 
+  httpclient-request:
+    image: christianacca/httpclient-request:${TAG:-latest}
+    build:
+      context: ./src/httpclient-request
+      dockerfile: Dockerfile
+    environment: 
+      - HttpRunner__Url=https://httpbin.org/response-headers?freeform=hello
+      - HttpRunner__RequestIntervals__0=00:00:05
+      - HttpRunner__RequestIntervals__1=
+      - HttpRunner__RequestIntervals__2=00:00:03
