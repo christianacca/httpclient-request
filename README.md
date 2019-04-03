@@ -15,10 +15,10 @@
 
 ## Supported settings
 
-See [HttpRunnerSettings.cs](src/HttpRunnerSettings.cs) for an explanation of each setting that can be
+See [HttpRunnerSettings.cs](src/httpclient-request/HttpRunnerSettings.cs) for an explanation of each setting that can be
 supplied
 
-See [appsttings.json](src/appsttings.json) `HttpRunner` for the default values for these settings.
+See [appsttings.json](src/httpclient-request/appsttings.json) `HttpRunner` for the default values for these settings.
 
 To override these defaults you can use:
 * docker config (swarm mode only) to supply an appsettings.json or appsettings-overrides.json file
