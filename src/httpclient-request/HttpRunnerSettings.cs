@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace client
+namespace App
 {
     public class HttpRunnerSettings
     {
@@ -44,21 +44,6 @@ namespace client
         /// The Url to send a GET request to
         /// </summary>
         public string Url { get; set; }
-
-        public IEnumerable<TimeSpan?> GetRequestIntervals()
-        {
-            foreach (var interval in RequestIntervals)
-            {
-                if (string.IsNullOrEmpty(interval))
-                {
-                    yield return null;
-                }
-                else
-                {
-                    yield return TimeSpan.Parse(interval);
-                }
-            }
-        }
 
         public override string ToString()
         {

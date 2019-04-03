@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace client
+namespace App
 {
     public class HttpRunner : BackgroundService
     {
@@ -36,7 +36,7 @@ namespace client
                 LogConfiguration(client);
 
                 Logger.LogInformation("Test started");
-                foreach (var delay in Settings.GetRequestIntervals())
+                foreach (var delay in Settings.RequestIntervals.ToTimeSpans())
                 {
                     await Delay(delay, cancellationToken);
                     await MakeRequest(client, cancellationToken);
