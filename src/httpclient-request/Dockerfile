@@ -13,5 +13,5 @@ RUN dotnet publish -c Release -o /app --no-build
 
 FROM base AS final
 WORKDIR /app
-ENTRYPOINT ["dotnet", "client.dll"]
+ENTRYPOINT ["dotnet", "httpclient-request.dll"]
 COPY --from=publish /app .

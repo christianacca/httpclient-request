@@ -5,10 +5,9 @@ shortsha=${SOURCE_COMMIT:0:12}
 docker tag $IMAGE_NAME $DOCKER_REPO:$shortsha
 docker push $DOCKER_REPO:$shortsha
 
-# update latest image tag only if building on master
-if [ $SOURCE_BRANCH == 'master' ]; then
-    docker push $DOCKER_REPO:latest
-fi
+# tag with latest
+docker tag $IMAGE_NAME $DOCKER_REPO:latest
+docker push $DOCKER_REPO:latest
 
 # convert 1.2.3 into an array consisting of 1 1.2 1.2.3
 vsparts=($(echo $DOCKER_TAG | tr "." "\n"))
