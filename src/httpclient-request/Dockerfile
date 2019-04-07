@@ -6,7 +6,7 @@ WORKDIR /src
 COPY httpclient-request.csproj .
 RUN dotnet restore
 COPY . .
-RUN dotnet build -c Release -o /app --no-restore
+RUN dotnet build -c Release --no-restore
 
 FROM build AS publish
 RUN dotnet publish -c Release -o /app --no-build
