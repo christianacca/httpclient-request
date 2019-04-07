@@ -28,5 +28,5 @@ To override these defaults you can use:
 ## Build / Publish
 
 * Build only: `./build.ps1`
-* Build + publish: `./build.ps1 -Version 'latest',$Version -Publish -Credential christianacca`
-    * where `$Version` is used to tag the image to build and publish
+* Build + publish: `./build.ps1 -Tag n.n.n -Publish -Credential christianacca`
+    * replace 'n.n.n' with the sematic version that describes the change EG: 1.0.0
