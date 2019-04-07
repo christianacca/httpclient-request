@@ -10,7 +10,7 @@ if [ $SOURCE_BRANCH == 'master' ]; then
     docker push $DOCKER_REPO:latest
 fi
 
-# convert 1.2.3 into an array consisting of 1,1.2,1.2.3
+# convert 1.2.3 into an array consisting of 1 1.2 1.2.3
 vsparts=($(echo $DOCKER_TAG | tr "." "\n"))
 vs=''
 for (( i=0; i<${#vsparts[@]}; ++i )) do

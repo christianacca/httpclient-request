@@ -2,7 +2,7 @@ version: '3.5'
 
 services: 
   httpclient-request:
-    image: christianacca/httpclient-request:${TAG:-latest}
+    image: ${REPO:-christianacca/httpclient-request}:${TAG:-latest}
     build:
       context: ./src/httpclient-request
       dockerfile: Dockerfile
