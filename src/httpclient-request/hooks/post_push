@@ -1,14 +1,5 @@
 #!/bin/bash
 
-# tag with shortened git sha
-shortsha=${SOURCE_COMMIT:0:12}
-docker tag $IMAGE_NAME $DOCKER_REPO:$shortsha
-docker push $DOCKER_REPO:$shortsha
-
-# update latest tag
-docker tag $IMAGE_NAME $DOCKER_REPO:latest
-docker push $DOCKER_REPO:latest
-
 # convert 1.2.3 into an array consisting of 1 1.2 1.2.3
 vsparts=($(echo $DOCKER_TAG | tr "." "\n"))
 vs=''
@@ -30,3 +21,7 @@ for (( i=0; i<${#versions[@]}; ++i )) do
         docker push $DOCKER_REPO:$vs
     fi
 done
+
+# update latest tag
+docker tag $IMAGE_NAME $DOCKER_REPO:latest
+docker push $DOCKER_REPO:latest
