@@ -21,8 +21,12 @@ begin {
     }
 
     function Get-GitShortCommitSha {
-        $sha = exec { git rev-parse HEAD }
+        $sha = Get-GitCommitSha
         $sha.substring(0, [System.Math]::Min(14, $sha.Length))
+    }
+
+    function Get-GitCommitSha {
+        exec { git rev-parse HEAD }
     }
 
     function Get-Version {
@@ -70,7 +74,12 @@ process {
     $env:REPO = 'christianacca/httpclient-request'
 
     $env:TAG = $Tag
-    exec { docker-compose build --pull }
+    $buildArgs = @(
+        '--build-arg', "VERSION=$Tag"
+        '--build-arg', "COMMIT=$(Get-GitCommitSha)"
+        '--build-arg', "DATE=$(Get-Date -UFormat '%Y-%m-%dT%H:%M:%SZ')"
+    )
+    exec { docker-compose build @buildArgs --pull }
 
     $builtImage = '{0}:{1}' -f $env:REPO, $Tag
     $tags | Where-Object { $_ -ne $Tag } | ForEach-Object {

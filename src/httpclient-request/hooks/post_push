@@ -5,7 +5,7 @@ shortsha=${SOURCE_COMMIT:0:12}
 docker tag $IMAGE_NAME $DOCKER_REPO:$shortsha
 docker push $DOCKER_REPO:$shortsha
 
-# tag with latest
+# update latest tag
 docker tag $IMAGE_NAME $DOCKER_REPO:latest
 docker push $DOCKER_REPO:latest
 
