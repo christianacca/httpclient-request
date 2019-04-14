@@ -84,7 +84,15 @@ namespace App
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            await RunTest(stoppingToken);
+            try
+            {
+                await RunTest(stoppingToken);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, "Test run failed");
+                ApplicationLifetime.StopApplication();
+            }
         }
     }
 }
